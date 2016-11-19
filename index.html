@@ -17,6 +17,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc.5/angular-material.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
     <script src="./scripts/app.js"></script>
 
     <!--    <link rel="stylesheet" type="text/css" href="./styles/migController.css">-->
@@ -24,7 +25,14 @@
 
 <body>
     <div ng-controller="migController">
-        {{hello}}
+        <section layout="row">
+            <h2 flex="66" style="font-family: 'Eczar', serif;">Mozilla Investigator</h2>
+            <div flex="33" layout="column">
+                <img flex="66" src="./styles/img/mig_logo.png" alt="mig logo">
+                <span flex="33"></span>
+            </div>
+
+        </section>
     </div>
 </body>
 
