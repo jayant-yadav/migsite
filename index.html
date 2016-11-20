@@ -31,35 +31,62 @@
                     <h2 flex style="font-family: 'Eczar', serif; font-size:40px ">Mozilla Investigator</h2>
                     <h3 flex> Mozilla's real-time digital forensics and investigation platform </h3>
                 </div>
-                <div flex>
+                <div flex layout="row" layout-align="space-around center">
                     <!--                    <md-button flex class="md-raised md-primary">Modules</md-button>-->
+                    <div>
+                        <md-menu>
+                            <md-button aria-label="Modules" class="md-raised md-primary" ng-click="$mdOpenMenu($event)">
+                                Modules
+                            </md-button>
+                            <md-menu-content width="4">
+                                <md-menu-item>
+                                    <md-button ng-click="">
+                                        File
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="">
+                                        Memory
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="">
+                                        NetStat
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="">
+                                        Package
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="">
+                                        Scribe
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="">
+                                        Ping
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="">
+                                        TimeDrift
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
 
-                    <md-menu flex>
-                        <md-button aria-label="Modules" class="md-raised md-primary" ng-click="openMenu($mdOpenMenu, $event)">
-                            Modules
-                        </md-button>
-                        <md-menu-content width="4">
-                            <md-menu-item>
-                                <md-button ng-click="">
-                                    File
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button ng-click="">
-                                    Memory
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-divider></md-menu-divider>
-                            <md-menu-item>
-                                <md-button ng-click="">
-                                    NetStat
-                                </md-button>
-                            </md-menu-item>
-                            <!--TODO: add more buttons-->
-                        </md-menu-content>
-                    </md-menu>
-
-                    <md-button flex class="md-raised md-primary">Generate Order?</md-button>
+                    </div>
+                    <div>
+                        <md-button class="md-raised md-primary">Generate Order?</md-button>
+                    </div>
                 </div>
             </div>
             <div flex="33" layout="column">
