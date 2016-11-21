@@ -24,11 +24,12 @@
 </head>
 
 <body>
+    <div w3-include-html="./view/createOrder.tmpl.html"></div>
     <div ng-controller="migController" layout="column">
         <section flex layout="row">
-            <div flex="66" layout="column">
+            <div flex="50" layout="column">
                 <div flex>
-                    <h2 flex style="font-family: 'Eczar', serif; font-size:40px; margin-bottom:0; ">Mozilla Investigator</h2>
+                    <h2 flex style="font-family: 'Eczar', serif; font-size:40px; margin-bottom:0; margin-top:0; margin-left:2%;">Mozilla Investigator</h2>
                     <h3 style="margin-left:10%; margin-top:0;"> Mozilla's real-time digital forensics and investigation platform </h3>
                 </div>
                 <div flex layout="row" layout-align="space-around center">
@@ -85,14 +86,19 @@
 
                     </div>
                     <div>
-                        <md-button class="md-raised md-primary">Generate Order?</md-button>
+                        <md-button class="md-primary md-raised" ng-click="createOrder($event)">
+                            Create Order?
+                        </md-button>
                     </div>
                 </div>
             </div>
-            <div flex="33" layout="column">
+            <div flex="40" layout="column">
                 <span flex></span>
                 <img style="width:100%; height:auto;" src="./styles/img/mig_logo.png " alt="mig logo ">
                 <span flex></span>
+            </div>
+            <div flex="10">
+
             </div>
 
         </section>
