@@ -17,15 +17,18 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc.5/angular-material.min.js"></script>
+    <script src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
     <script src="./scripts/app.js"></script>
-
+    <script src="./scripts/controller/createOrderController.js"></script>
     <!--    <link rel="stylesheet" type="text/css" href="./styles/migController.css">-->
 </head>
 
 <body>
-    <div w3-include-html="./view/createOrder.tmpl.html"></div>
+    <!--    <div w3-include-html="./view/createOrder.tmpl.html"></div>-->
     <div ng-controller="migController" layout="column">
+        <!--    <div w3-include-html="./view/createOrder.tmpl.html"></div>-->
+        <!--        <div ng-include src="'./view/createOrder.tmpl.html'"></div>-->
         <section flex layout="row">
             <div flex="50" layout="column">
                 <div flex>
@@ -35,13 +38,13 @@
                 <div flex layout="row" layout-align="space-around center">
                     <!--                    <md-button flex class="md-raised md-primary">Modules</md-button>-->
                     <div>
-                        <md-menu>
+                        <md-menu md-position-mode="target-right target">
                             <md-button aria-label="Modules" class="md-raised md-primary" ng-click="$mdOpenMenu($event)">
                                 Modules
                             </md-button>
                             <md-menu-content width="4">
                                 <md-menu-item>
-                                    <md-button ng-click="">
+                                    <md-button ng-click="open()">
                                         File
                                     </md-button>
                                 </md-menu-item>
@@ -86,7 +89,7 @@
 
                     </div>
                     <div>
-                        <md-button class="md-primary md-raised" ng-click="createOrder($event)">
+                        <md-button ui-sref="createOrder" class="md-primary md-raised" ng-click="createOrder($event)">
                             Create Order?
                         </md-button>
                     </div>
@@ -94,7 +97,7 @@
             </div>
             <div flex="40" layout="column">
                 <span flex></span>
-                <img style="width:100%; height:auto;" src="./styles/img/mig_logo.png " alt="mig logo ">
+                <img style="width:100%; height:auto;" src="./styles/img/mig_logo.png " alt="mig logo">
                 <span flex></span>
             </div>
             <div flex="10">
@@ -102,10 +105,196 @@
             </div>
 
         </section>
-        <div flex>
+        <br>
+        <md-divider></md-divider>
+        <md-whiteframe style="margin:10px; padding-left:10px; background-color:#F3E5F5 " class="md-whiteframe-5dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout="column" layout-align="space-around none">
+            <h2>Latest Actions</h2>
+            <div layout="row">
+                <div flex layout="column">
+                    <h3>ID</h3>
+                    <p>dfsdf</p>
+                    <p>dfsdf</p>
+                    <p>dfsdf</p>
+                </div>
+                <div flex layout="column">
+                    <h3>Name</h3>
+                    <p>dfsdf</p>
+                    <p>dfsdf</p>
+                    <p>dfsdf</p>
 
-        </div>
+                </div>
+                <div flex layout="column">
+                    <h3>Sent</h3>
+                    <p>dfsdf</p>
+                    <p>dfsdf</p>
+                    <p>dfsdf</p>
+
+                </div>
+                <div flex layout="column">
+                    <h3>Date</h3>
+                    <p>dfsdf</p>
+                    <p>dfsdf</p>
+                    <p>dfsdf</p>
+
+                </div>
+                <div flex layout="column">
+                    <h3>Investigators</h3>
+                    <p>dfsdf</p>
+                    <p>dfsdf</p>
+                    <p>dfsdf</p>
+
+                </div>
+            </div>
+
+        </md-whiteframe>
+
+
+        <md-whiteframe style="margin:10px; padding-left:10px; background-color: #FAFAFA " class="md-whiteframe-5dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout="row" ng-if="file">
+            <div flex layout="column">
+                <h3>INPUTS</h3>
+                <div>
+                    <md-input-container>
+                        <label>Path</label>
+                        <input ng-model="path">
+                    </md-input-container>
+                </div>
+                <div>
+                    <md-input-container>
+                        <label>Name</label>
+                        <input ng-model="name">
+                    </md-input-container>
+                </div>
+                <div>
+                    Size:
+                    <md-input-container>
+                        <md-select ng-model="sym">
+                            <md-option value="less">
+                                less than
+                            </md-option>
+                            <md-option value="eq">
+                                equal to
+                            </md-option>
+                            <md-option value="gr">
+                                greater than
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+            <!--            <md-divider style="transform: rotate(90deg);"></md-divider>-->
+            <div flex>
+                <h3>OUTPUT</h3>
+
+            </div>
+        </md-whiteframe>
+
+
+
+
+
+
+        <script type="text/ng-template" id="createOrder.tmpl.html">
+            <md-dialog aria-label="Orders" ng-cloak>
+                <form>
+                    <md-toolbar>
+                        <div class="md-toolbar-tools">
+                            <h2>Orders</h2>
+                            <span flex></span>
+                            <md-button class="md-icon-button" ng-click="cancel()">
+                                <md-icon md-svg-src="./styles/img/icons/ic_close_white_24px.svg" aria-label="Close dialog"></md-icon>
+                            </md-button>
+                        </div>
+                    </md-toolbar>
+
+                    <md-dialog-content>
+                        <div class="md-dialog-content" layout-align="center center" layout="column">
+                            <h2>The following orders are available</h2>
+                            <ul style="list-style: none;">
+                                <li>
+                                    <md-button class="md-primary" ng-click="action($event)">Action</md-button>
+                                </li>
+                                <li>
+                                    <md-button class="md-primary">Investigator</md-button>
+                                </li>
+                                <li>
+                                    <md-button class="md-primary">Loader Entry</md-button>
+                                </li>
+                                <li>
+                                    <md-button class="md-primary">Manifest</md-button>
+                                </li>
+                            </ul>
+                        </div>
+                    </md-dialog-content>
+
+                    <md-dialog-actions layout="row">
+                        <md-button>
+                            Cancel
+                        </md-button>
+                        <span flex></span>
+                        <md-button ng-click="answer('useful')" md-autofocus>
+                            Okay
+                        </md-button>
+                    </md-dialog-actions>
+                </form>
+            </md-dialog>
+        </script>
+
+        <script type="text/ng-template" id="action.tmpl.html">
+            <md-dialog aria-label="Orders" ng-cloak>
+                <form>
+                    <md-toolbar>
+                        <div class="md-toolbar-tools">
+                            <h2>Orders</h2>
+                            <span flex></span>
+                            <md-button class="md-icon-button" ng-click="cancel()">
+                                <md-icon md-svg-src="./styles/img/icons/ic_close_white_24px.svg" aria-label="Close dialog"></md-icon>
+                            </md-button>
+                        </div>
+                    </md-toolbar>
+
+                    <md-dialog-content>
+                        <div class="md-dialog-content" layout-align="center center" layout="column">
+                            <h2>The following orders are available under action</h2>
+                            <ul style="list-style: none;">
+                                <li>
+                                    <md-button class="md-primary" ng-click="action($event)">add operation</md-button>
+                                </li>
+                                <li>
+                                    <md-button class="md-primary">compress</md-button>
+                                </li>
+                                <li>
+                                    <md-button class="md-primary">listagents</md-button>
+                                </li>
+                                <li>
+                                    <md-button class="md-primary">deloperation</md-button>
+                                </li>
+                                <li>
+                                    <md-button class="md-primary">details</md-button>
+                                </li>
+                            </ul>
+                        </div>
+                    </md-dialog-content>
+
+                    <md-dialog-actions layout="row">
+                        <md-button>
+                            Cancel
+                        </md-button>
+                        <span flex></span>
+                        <md-button ng-click="answer('useful')" md-autofocus>
+                            Okay
+                        </md-button>
+                    </md-dialog-actions>
+                </form>
+            </md-dialog>
+        </script>
+
+
+
+
+
+
     </div>
+    <!--    <ui-view></ui-view>-->
 </body>
 
 </html>
