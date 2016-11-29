@@ -1,5 +1,12 @@
 app.controller('homeCtrl', ['$scope', '$mdDialog', '$mdSidenav', '$state', '$http', '$timeout', function ($scope, $mdDialog, $mdSidenav, $state, $http, $timeout) {
 
+    $scope.showDashboard = 0;
+    $scope.file = 0;
+
+
+
+
+
     $scope.getHeartbeat = function () {
         console.log("here");
         $http.get('http://localhost:12345/api/v1/heartbeat').success(function (response) {
@@ -17,10 +24,10 @@ app.controller('homeCtrl', ['$scope', '$mdDialog', '$mdSidenav', '$state', '$htt
 
     /*-----------------------------------------------------------------------------------------------------------*/
 
-    $scope.showDashboard = 0;
 
     $scope.open = function () {
         $scope.file = 1;
+        $mdSidenav('left').toggle();
     }
 
     $scope.createOrder = function (ev) {
