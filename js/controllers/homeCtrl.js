@@ -34,7 +34,7 @@ app.controller('homeCtrl', ['$scope', '$mdDialog', '$mdSidenav', '$state', '$htt
         $mdDialog.show({
                 //                controller: CreateOrder,
                 controller: CreateOrder,
-                templateUrl: 'createOrder.tmpl.html',
+                templateUrl: 'action.tmpl.html',
                 //                templateUrl: '.view/createOrder.tmpl.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
