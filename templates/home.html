@@ -127,6 +127,9 @@
                 </md-toolbar>
                 <div class="frame md-whiteframe-glow-z1" ng-class="{'openDashboard':showDashboard,'closeDashboard':!showDashboard}" ng-if="showDashboard" layout-padding>
                     <!--TODO: use API dashboard here-->
+                    <!-- <div class="frame md-whiteframe-glow-z1" ng-class="{'openDashboard':showDashboard,'closeDashboard':!showDashboard}" ng-if="showDashboard" layout-padding>
+                        TODO: use API dashboard here-->
+                    <!-- {{dashboard}} -->
                     <div layout="column">
                         <div flex layout="row">
                             <div flex>
@@ -134,68 +137,60 @@
 
                                 <ul>
                                     <li>
-                                        1 online agents on 1 endpoints
+                                        {{dashboard[0].data[0].value}} online agents on {{dashboard[0].data[2].value}} endpoints
                                     </li>
                                     <li>
-                                        0 idle agents on 0 endpoints
+                                        {{dashboard[0].data[3].value}} idle agents on {{dashboard[0].data[5].value}} endpoints
                                     </li>
                                     <li>
-                                        0 endpoints are running 2 or more agents
+                                        {{dashboard[0].data[7].value}} endpoints are running 2 or more agents
                                     </li>
                                     <li>
-                                        0 endpoints appeared over the last 7 days
+                                        {{dashboard[0].data[6].value}} endpoints appeared over the last 7 days
                                     </li>
                                     <li>
-                                        0 endpoints disappeared over the last 7 days
+                                        {{dashboard[0].data[8].value}} endpoints disappeared over the last 7 days
                                     </li>
                                     <li>
-                                        0 endpoints have been flapping
+                                        {{dashboard[0].data[9].value}} endpoints have been flapping
                                     </li>
                                 </ul>
                             </div>
                             <div flex>
                                 <h3>Online agents by version:</h3>
                                 <ul>
-                                    <li>
-                                        version 20161028-0.5424a85.demo: 1 agent
+                                    <li ng-repeat="data in dashboard[0].data[1].value">
+                                        {{data.version}}: {{data.count}} agent
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div flex>
-                            <h3>Idle agents by version:</h3>
+                            <h3>Idle agents by version: </h3> {{dashboard[0].data[4].value}}
                             <h3>Latest Actions</h3>
                             <div layout="row">
                                 <div flex layout="column">
                                     <h3>ID</h3>
                                     <ul style="list-style: none;">
-                                        <li>
-                                            7235585441799
-                                        </li>
-                                        <li>
-                                            7268298719241
+
+                                        <li ng-repeat="data in dashboard" ng-if="!$first">
+                                            <a ui-sref="actionId" style="text-decoration: none;" ng-click="getActionInfo(data.data[0].value.id)">{{data.data[0].value.id}}</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div flex layout="column">
                                     <h3>Name</h3>
                                     <ul style="list-style: none;">
-                                        <li>
-                                            Integration tests
-                                        </li>
-                                        <li>
-                                            timedrift -t status='online'
+                                        <li ng-repeat="data in dashboard" ng-if="!$first">
+                                            {{data.data[0].value.name}}
                                         </li>
                                     </ul>
                                 </div>
                                 <div flex layout="column">
                                     <h3>Sent</h3>
                                     <ul style="list-style: none;">
-                                        <li>
-                                            1
-                                        </li>
-                                        <li>
-                                            0
+                                        <li ng-repeat="data in dashboard" ng-if="!$first">
+                                            {{data.data[0].value.counters.sent}}
                                         </li>
                                     </ul>
 
@@ -203,11 +198,8 @@
                                 <div flex layout="column">
                                     <h3>Date</h3>
                                     <ul style="list-style: none;">
-                                        <li>
-                                            2016-10-28T14:26:56Z
-                                        </li>
-                                        <li>
-                                            0009-01-11T11:11:39Z
+                                        <li ng-repeat="data in dashboard" ng-if="!$first">
+                                            {{data.data[0].value.starttime}}
                                         </li>
                                     </ul>
 
@@ -215,11 +207,8 @@
                                 <div flex layout="column">
                                     <h3>Investigators</h3>
                                     <ul style="list-style: none;">
-                                        <li>
-                                            jayant
-                                        </li>
-                                        <li>
-                                            jayant
+                                        <li ng-repeat="data in dashboard" ng-if="!$first">
+                                            <span ng-repeat="inv in data.data[0].value.investigators">{{inv.name}} </span>
                                         </li>
                                     </ul>
 
@@ -227,6 +216,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <br>
+                <div ui-view>
                 </div>
 
                 <md-whiteframe flex style="margin:10px; padding-left:10px; background-color: #FAFAFA " class="md-whiteframe-5dp" layout="row" ng-if="file">
