@@ -1,4 +1,4 @@
-app.controller('homeCtrl', ['$scope', '$mdDialog', '$mdSidenav', '$state', '$http', '$timeout', 'dashboardService', 'actionService', function ($scope, $mdDialog, $mdSidenav, $state, $http, $timeout, dashboardService, actionService) {
+app.controller('homeCtrl', ['$scope', '$mdDialog', '$mdSidenav', '$state', '$http', '$timeout', 'dashboardService', function ($scope, $mdDialog, $mdSidenav, $state, $http, $timeout, dashboardService) {
 
     $scope.showDashboard = 0;
     $scope.file = 0;
@@ -16,10 +16,10 @@ app.controller('homeCtrl', ['$scope', '$mdDialog', '$mdSidenav', '$state', '$htt
 
     $scope.getActionInfo = function (id) {
         console.log(id);
-        /*$state.go('getAction', {
-    actionId: id
-})*/
-        //        actionService.actionId(id);
+        $state.go('getAction', {
+                actionId: id
+            })
+            //        actionService.actionId(id);
     }
 
     /*-------------------------------side nav module menu--------------------------------------------------------*/
