@@ -1,4 +1,4 @@
-app.controller('actionCtrl', ['$scope', '$mdDialog', '$mdSidenav', '$state', '$http', '$timeout', 'dashboardService', function ($scope, $mdDialog, $mdSidenav, $state, $http, $timeout, dashboardService, actionService) {
+app.controller('actionCtrl', ['$scope', '$mdDialog', '$mdSidenav', '$state', '$http', '$timeout', 'dashboardService', 'actionService', function ($scope, $mdDialog, $mdSidenav, $state, $http, $timeout, dashboardService, actionService) {
 
 
 
@@ -15,5 +15,6 @@ app.controller('actionCtrl', ['$scope', '$mdDialog', '$mdSidenav', '$state', '$h
         }
     }
 
-
+    //    $scope.actionId = actionService.actionId();
+    console.log($scope.actionId);
   }]);
