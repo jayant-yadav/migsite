@@ -201,86 +201,64 @@
                         </div>
                     </div>
                     <div flex>
-                        <h3>Idle agents by version: </h3> {{dashboard[0].data[4].value}}
-                        <h3>Latest Actions</h3>
-                        <div layout="row">
-                            <div flex layout="column">
-                                <h3>ID</h3>
-                                <ul style="list-style: none;">
-                                    <li ng-repeat="data in dashboard" ng-if="!$first">
-                                        <a></a>
-                                        <md-button class="md-primary" ng-click="getActionInfo(data.data[0].value.id)" target="_blank">{{data.data[0].value.id}}</md-button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div flex layout="column">
-                                <h3>Name</h3>
-                                <ul style="list-style: none;">
-                                    <li ng-repeat="data in dashboard" ng-if="!$first">
-                                        {{data.data[0].value.name}}
-                                    </li>
-                                </ul>
-                            </div>
-                            <div flex layout="column">
-                                <h3>Sent</h3>
-                                <ul style="list-style: none;">
-                                    <li ng-repeat="data in dashboard" ng-if="!$first">
-                                        {{data.data[0].value.counters.sent}}
-                                    </li>
-                                </ul>
+                        <h3>Idle agents by version: </h3>
+                        <ul>
+                            <li ng-if="dashboard[0].data[4].value ">{{dashboard[0].data[4].value}}</li>
+                            <p ng-if="!dashboard[0].data[4].value ">none</p>
+                        </ul>
+                        <h3>Latest Actions:</h3>
+                        <table flex style="width:100% ">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Sent</th>
+                                <th>Date</th>
+                                <th>Investigators</th>
+                            </tr>
+                            <tr ng-repeat="data in dashboard " ng-if="!$first ">
+                                <td>
+                                    <md-button style="margin-left:0; padding-left:0;" class="md-primary " ng-click="getActionInfo(data.data[0].value.id) " target="_blank ">{{data.data[0].value.id}}</md-button>
+                                </td>
+                                <td>{{data.data[0].value.name}}</td>
+                                <td ng-if="data.data[0].value.counters.sent">{{data.data[0].value.counters.sent}}</td>
+                                <td ng-if="!data.data[0].value.counters.sent">0</td>
+                                <td><pre>{{data.data[0].value.starttime}}</pre></td>
+                                <td> <span ng-repeat="inv in data.data[0].value.investigators ">{{inv.name}} </span></td>
+                            </tr>
+                        </table>
 
-                            </div>
-                            <div flex layout="column">
-                                <h3>Date</h3>
-                                <ul style="list-style: none;">
-                                    <li ng-repeat="data in dashboard" ng-if="!$first">
-                                        <pre>{{data.data[0].value.starttime}}</pre>
-                                    </li>
-                                </ul>
-
-                            </div>
-                            <div flex layout="column">
-                                <h3>Investigators</h3>
-                                <ul style="list-style: none;">
-                                    <li ng-repeat="data in dashboard" ng-if="!$first">
-                                        <span ng-repeat="inv in data.data[0].value.investigators">{{inv.name}} </span>
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
             <!--            </md-content>-->
             <br>
 
-            <!-- <md-whiteframe flex style="margin:10px; padding-left:10px; background-color: #FAFAFA " class="md-whiteframe-5dp" layout="row" ng-if="file">
-                    <div flex layout="column">
+            <!-- <md-whiteframe flex style="margin:10px; padding-left:10px; background-color: #FAFAFA " class="md-whiteframe-5dp " layout="row " ng-if="file ">
+                    <div flex layout="column ">
                         <h3>INPUTS</h3>
                         <div>
                             <md-input-container>
                                 <label>Path</label>
-                                <input ng-model="path">
+                                <input ng-model="path ">
                             </md-input-container>
                         </div>
                         <div>
                             <md-input-container>
                                 <label>Name</label>
-                                <input ng-model="name">
+                                <input ng-model="name ">
                             </md-input-container>
                         </div>
                         <div>
                             Size:
                             <md-input-container>
-                                <md-select ng-model="sym">
-                                    <md-option value="less">
+                                <md-select ng-model="sym ">
+                                    <md-option value="less ">
                                         less than
                                     </md-option>
-                                    <md-option value="eq">
+                                    <md-option value="eq ">
                                         equal to
                                     </md-option>
-                                    <md-option value="gr">
+                                    <md-option value="gr ">
                                         greater than
                                     </md-option>
                                 </md-select>
@@ -300,54 +278,54 @@
 
 
 
-<!--<div id="LatestActions">
-    <button ng-click="getHeartbeat()">Get Heartbeat</button>
+<!--<div id="LatestActions ">
+    <button ng-click="getHeartbeat() ">Get Heartbeat</button>
     {{heartbeat}}
 
 </div>-->
 <!-------------------------------------------------templates--------------------------------------------->
-<script type="text/ng-template" id="action.tmpl.html">
-    <md-dialog aria-label="Orders" ng-cloak>
+<script type="text/ng-template " id="action.tmpl.html ">
+    <md-dialog aria-label="Orders " ng-cloak>
         <form>
             <md-toolbar>
-                <div class="md-toolbar-tools">
+                <div class="md-toolbar-tools ">
                     <h2>Orders</h2>
                     <span flex></span>
-                    <md-button class="md-icon-button" ng-click="cancel()">
-                        <md-icon md-svg-src=".img/icons/ic_close_white_24px.svg" aria-label="Close dialog"></md-icon>
+                    <md-button class="md-icon-button " ng-click="cancel() ">
+                        <md-icon md-svg-src=".img/icons/ic_close_white_24px.svg " aria-label="Close dialog "></md-icon>
                     </md-button>
                 </div>
             </md-toolbar>
 
             <md-dialog-content>
-                <div class="md-dialog-content" layout-align="center center" layout="column">
+                <div class="md-dialog-content " layout-align="center center " layout="column ">
                     <h2>The following orders are available under action</h2>
-                    <ul style="list-style: none;">
+                    <ul style="list-style: none; ">
                         <li>
-                            <md-button class="md-primary" ng-click="action($event)">add operation</md-button>
+                            <md-button class="md-primary " ng-click="action($event) ">add operation</md-button>
                         </li>
                         <li>
-                            <md-button class="md-primary">compress</md-button>
+                            <md-button class="md-primary ">compress</md-button>
                         </li>
                         <li>
-                            <md-button class="md-primary">listagents</md-button>
+                            <md-button class="md-primary ">listagents</md-button>
                         </li>
                         <li>
-                            <md-button class="md-primary">deloperation</md-button>
+                            <md-button class="md-primary ">deloperation</md-button>
                         </li>
                         <li>
-                            <md-button class="md-primary">details</md-button>
+                            <md-button class="md-primary ">details</md-button>
                         </li>
                     </ul>
                 </div>
             </md-dialog-content>
 
-            <md-dialog-actions layout="row">
+            <md-dialog-actions layout="row ">
                 <md-button>
                     Cancel
                 </md-button>
                 <span flex></span>
-                <md-button ng-click="answer('useful')" md-autofocus>
+                <md-button ng-click="answer( 'useful') " md-autofocus>
                     Okay
                 </md-button>
             </md-dialog-actions>
