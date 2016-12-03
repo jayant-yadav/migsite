@@ -41,10 +41,72 @@
 
             </md-content>
         </md-tab>
+
         <md-tab label="Action Launcher Mode">
             <md-content class="md-padding">
-                <h1 class="md-display-2">Tab Three</h1>
-
+                <p>Generate new action using current action as a template:</p>
+                <br>
+                <md-input-container>
+                    <label>Set Name</label>
+                    <input required ng-model="name">
+                </md-input-container>
+                <br>
+                <div layout="row">
+                    <p> Set Counters: </p>
+                    <div layout="column">
+                        <md-input-container>
+                            <label>Done</label>
+                            <input name="done" ng-model="done" required ng-pattern="" md-maxlength="">
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Inflight</label>
+                            <input name="inflight" ng-model="inflight" required ng-pattern="" md-maxlength="">
+                        </md-input-container>
+                    </div>
+                    <div layout="column">
+                        <md-input-container>
+                            <label>Sent</label>
+                            <input name="sent" ng-model="sent" required ng-pattern="" md-maxlength="">
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Success</label>
+                            <input name="success" ng-model="success" required ng-pattern="" md-maxlength="">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div layout="row">
+                    <p> Description: </p>
+                    <div layout="column">
+                        <md-input-container>
+                            <label>Author</label>
+                            <input required ng-model="author">
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Email</label>
+                            <input required type="email" ng-model="Email">
+                        </md-input-container>
+                    </div>
+                    <div layout="column">
+                        <md-input-container>
+                            <label>revision</label>
+                            <input name="rev" ng-model="revision" required ng-pattern="" md-maxlength="">
+                        </md-input-container>
+                    </div>
+                </div>
+                <md-input-container>
+                    <label>Expire After</label>
+                    <input name="ea" ng-model="expreAfter" required ng-pattern="" md-maxlength="">
+                </md-input-container>
+                <br>
+                <md-input-container>
+                    <label>Finish Time</label>
+                    <input name="ea" ng-model="expreAfter" required ng-pattern="" md-maxlength="">
+                </md-input-container>
+                <br>
+                <div layout="row">
+                    <p>Id: </p> <pre><!--{{id}}--> blahblahblah</pre>
+                </div>
+                <!--TODO: give functionality of adding new operations and deleting operations-->
             </md-content>
         </md-tab>
     </md-tabs>
